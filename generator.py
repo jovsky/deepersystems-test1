@@ -31,10 +31,18 @@ for project in data:
 for mName in managers:
   managerProjects = managers[mName]
   managers[mName] = sorted(managerProjects, key=lambda k: k['priority'])
+  newlist = []
+  for m in managers[mName]:
+    newlist.append(m["name"])
+  managers[mName] = newlist
 
 for wName in watchers:
   watcherProjects = watchers[wName]
   watchers[wName] = sorted(watcherProjects, key=lambda k: k['priority'])
+  newlist = []
+  for w in watchers[wName]:
+    newlist.append(w["name"])
+  watchers[wName] = newlist
 
 with open('managers.json', 'w') as mjf:
   json.dump(managers, mjf)
